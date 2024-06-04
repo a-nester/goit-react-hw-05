@@ -1,16 +1,19 @@
-// import { createFetch } from "../../apiFetch";
+import { Link, useLocation } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 export const MovieList = ({ movies }) => {
+  const location = useLocation();
   console.log(movies);
   return (
     <ul>
       {movies.map((movie) => {
+        const id = nanoid();
         return (
-          <>
-            <li>
-              <a href={movie.title}>{movie.title}</a>
-            </li>
-          </>
+          <div key={id}>
+            <Link to={movie.id} state={location}>
+              {movie.title}
+            </Link>
+          </div>
         );
       })}
     </ul>
