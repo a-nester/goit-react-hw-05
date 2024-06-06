@@ -1,18 +1,24 @@
-import MoviesPage from "../pages/MoviesPage";
+import MovieList from "../components/MovieList/MovieList";
 import { createFetch } from "../apiFetch";
 
 import { useState, useEffect } from "react";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import Loader from "../components/Loader/Loader";
 
 export default function Home() {
+  const [loader, setLoader] = useState(false);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   useEffect(() => {
     const handleFetch = async () => {
       try {
+        setLoader(true);
         const data = await createFetch();
-        setMovies(() => [...data]);
+        setMovies(data.results);
       } catch (error) {
         setError(true);
+      } finally {
+        setLoader(false);
       }
     };
     handleFetch();
@@ -20,7 +26,9 @@ export default function Home() {
 
   return (
     <main>
-      <MoviesPage movies={movies} />
+      {loader && <Loader />}
+      {error && <ErrorMessage />}
+      <MovieList movies={movies} />
     </main>
   );
 }

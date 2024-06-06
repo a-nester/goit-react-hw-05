@@ -3,26 +3,43 @@ import { getMovieById } from "../apiFetch";
 import { useEffect, useState } from "react";
 
 export const MovieDetailsPage = () => {
-  //   const [movie, setMovie] = useState();
-  //   const { movieID } = useParams();
-  //   useEffect(() => {
-  //     const handleFetch = async () => {
-  //       try {
-  //         const movieById = await getMovieById(movieID);
-  //         // setMovie(() => {
-  //         //   [...movieById];
-  //         // });
-  //         // console.log(movieById);
-  //       } catch (error) {
-  //         console.log("Error");
-  //       }
-  //     };
-  //     handleFetch();
-  //   }, [movieID]);
+  const [movie, setMovie] = useState({});
+  const { movieID } = useParams();
+  useEffect(() => {
+    const handleFetch = async () => {
+      try {
+        const data = await getMovieById(movieID);
+        setMovie(data);
+      } catch (error) {
+        console.log("Error");
+      }
+    };
+    handleFetch();
+  }, [movieID]);
+
+  const {
+    poster_path,
+    original_title,
+    release_date,
+    popularity,
+    overview,
+    genres,
+  } = movie;
   return (
     <div>
-      {/* {movie} */}
-      {/* {movieID} */}
+      <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}></img>
+      <h2>{original_title}</h2>
+      <p>Release date: {release_date}</p>
+      <p>Popularity: {popularity}</p>
+      <p>Overview: {overview}</p>
+      {/* <p>
+        Genres:{" "}
+        {genres.map((genre) => {
+          return genre.name;
+        })}
+      </p> */}
+
+      {/* {<p>{movie.overview}</p>} */}
     </div>
   );
 };
