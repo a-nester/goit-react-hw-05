@@ -1,4 +1,4 @@
-import MovieList from "../components/MovieList/MovieList";
+import MoviesPage from "../pages/MoviesPage";
 import { createFetch } from "../apiFetch";
 
 import { useState, useEffect } from "react";
@@ -17,10 +17,10 @@ export default function Home() {
     };
     handleFetch();
   }, []);
-  console.log(error);
+
   return (
     <main>
-      <MovieList movies={movies} />
+      <MoviesPage movies={movies} />
     </main>
   );
 }
