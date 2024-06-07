@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 import { getMovieById } from "../apiFetch";
 import { useEffect, useState } from "react";
+import { MovieReview } from "../components/MovieReviews/MovieReviews";
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
@@ -40,6 +41,20 @@ export const MovieDetailsPage = () => {
       </p> */}
 
       {/* {<p>{movie.overview}</p>} */}
+      <p>Additional information</p>
+      <ul>
+        <li>
+          <Link to="moviecast" state={movieID}>
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link to="moviereview" state={movieID}>
+            Review
+          </Link>
+        </li>
+      </ul>
+      <Outlet />
     </div>
   );
 };

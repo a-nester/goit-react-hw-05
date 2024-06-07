@@ -41,3 +41,29 @@ export const getMovieBySearch = async (searchValue) => {
   });
   return response.data;
 };
+
+export const getMovieCast = async (id) => {
+  const response = await axios({
+    method: "GET",
+    url: `${BASE_URL}/movie/${id}/credits`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${KEY}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const getMovieReview = async (id) => {
+  const response = await axios({
+    method: "GET",
+    url: `${BASE_URL}/movie/${id}/reviews`,
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${KEY}`,
+    },
+  });
+
+  return response.data;
+};
