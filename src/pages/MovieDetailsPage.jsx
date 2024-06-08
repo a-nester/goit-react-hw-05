@@ -33,12 +33,13 @@ export const MovieDetailsPage = () => {
       <p>Release date: {release_date}</p>
       <p>Popularity: {popularity}</p>
       <p>Overview: {overview}</p>
-      {/* <p>
-        Genres:{" "}
-        {genres.map((genre) => {
+      <p>
+        Genres:{genres.join(", ")}
+      
+        {/* {genres.map((genre) => {
           return genre.name;
-        })}
-      </p> */}
+        })} */}
+      </p>
 
       {/* {<p>{movie.overview}</p>} */}
       <p>Additional information</p>
