@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+  gap: 8px;
+  /* margin-bottom: 8px; */
+}
+
+.listItem {
+  border: 1px solid black;
+}
+
+.itemBox {
+  display: flex;
+}
+
+.infoBox {
+  display: flex;
+}
+
+img {
+  width: 100px;
+}

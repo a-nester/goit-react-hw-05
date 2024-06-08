@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
+import css from "./Navigation.module.css";
 
 export const Navigation = () => {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/movies">Movies</Link>
-    </nav>
+    <header className={css.header}>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/movies">Movies</Link>
+      </nav>
+    </header>
   );
 };
 

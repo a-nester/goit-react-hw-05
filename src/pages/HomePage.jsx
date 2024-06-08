@@ -23,7 +23,7 @@ export default function Home() {
     };
     handleFetch();
   }, []);
-
+  console.log(movies);
   return (
     <main>
       {loader && <Loader />}
