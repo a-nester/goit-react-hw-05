@@ -1,7 +1,6 @@
 import { Link, useParams, Outlet } from "react-router-dom";
 import { getMovieById } from "../apiFetch";
 import { useEffect, useState } from "react";
-import { MovieReview } from "../components/MovieReviews/MovieReviews";
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState([]);
@@ -26,10 +25,7 @@ export const MovieDetailsPage = () => {
     overview,
     genres,
   } = movie;
-  
-  // { console.log(genres[0].name) }
-  // {console.log(genres.forEach(element => {element.name}))}
-  
+
   return (
     <div>
       <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}></img>
@@ -37,11 +33,7 @@ export const MovieDetailsPage = () => {
       <p>Release date: {release_date}</p>
       <p>Popularity: {popularity}</p>
       <p>Overview: {overview}</p>
-      <p>
-        {/* {genres.map((genre, i) => console.log(genre[i]))} */}
-      </p>
-
-      {/* {<p>{movie.genres}</p>} */}
+      <p>Genre: {movie.genres && genres.map((el) => el.name).join(" ")}</p>
       <p>Additional information</p>
       <ul>
         <li>

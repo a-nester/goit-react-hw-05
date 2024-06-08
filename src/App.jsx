@@ -7,6 +7,7 @@ import MovieDetailsPage from "./pages/MovieDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
+import Navigation from "./components/Navigation/Navigation";
 
 // const HomePage = lazy(() => import("./pages/HomePage"));
 // const MoviesPage = lazy(() => import("./pages/MoviesPage"));
@@ -20,10 +21,11 @@ import MovieReviews from "./components/MovieReviews/MovieReviews";
 function App() {
   return (
     <div>
-      <nav>
+      <Navigation />
+      {/* <nav>
         <Link to="/">Home</Link>
         <Link to="/movies">Movies</Link>
-      </nav>
+      </nav> */}
       <Suspense fallback={<div>Loading page...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
