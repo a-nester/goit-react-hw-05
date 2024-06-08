@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MovieReview } from "../components/MovieReviews/MovieReviews";
 
 export const MovieDetailsPage = () => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState([]);
   const { movieID } = useParams();
   useEffect(() => {
     const handleFetch = async () => {
@@ -26,6 +26,10 @@ export const MovieDetailsPage = () => {
     overview,
     genres,
   } = movie;
+  
+  // { console.log(genres[0].name) }
+  // {console.log(genres.forEach(element => {element.name}))}
+  
   return (
     <div>
       <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}></img>
@@ -34,14 +38,10 @@ export const MovieDetailsPage = () => {
       <p>Popularity: {popularity}</p>
       <p>Overview: {overview}</p>
       <p>
-        Genres:{genres.join(", ")}
-      
-        {/* {genres.map((genre) => {
-          return genre.name;
-        })} */}
+        {/* {genres.map((genre, i) => console.log(genre[i]))} */}
       </p>
 
-      {/* {<p>{movie.overview}</p>} */}
+      {/* {<p>{movie.genres}</p>} */}
       <p>Additional information</p>
       <ul>
         <li>
