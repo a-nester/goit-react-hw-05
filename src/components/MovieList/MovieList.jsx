@@ -9,7 +9,7 @@ export const MovieList = ({ movies }) => {
         const id = nanoid();
         return (
           <div key={id}>
-            <Link to={`${movie.id}`}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
           </div>
         );
       })}
