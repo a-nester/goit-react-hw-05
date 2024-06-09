@@ -1,19 +1,23 @@
 import { Formik, Form, Field } from "formik";
+import css from "./SearchBar.module.css";
 
-export const SearchBar = ({ onSearch }) => {
+export const SearchBar = ({ startValue, onSearch }) => {
   const handleSubmit = (initialValues, actions) => {
     actions.resetForm();
-
     onSearch(initialValues.searchValue);
-    // console.log(initialValues.searchValue);
   };
 
   return (
     <>
-      <Formik initialValues={{ searchValue: "" }} onSubmit={handleSubmit}>
-        <Form>
+      <Formik
+        initialValues={{ searchValue: startValue ?? "" }}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.searchForm}>
           <Field type="text" name="searchValue" />
-          <button type="submit">Search</button>
+          <button className={css.button} type="submit">
+            Search
+          </button>
         </Form>
       </Formik>
     </>

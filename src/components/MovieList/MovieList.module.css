@@ -1,15 +1,20 @@
 ul {
   list-style-type: none;
   gap: 8px;
-  /* margin-bottom: 8px; */
+  display: flex;
+  flex-direction: column;
 }
 
 .listItem {
   border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .itemBox {
   display: flex;
+  background-color: rgb(3, 0, 48);
+  color: aliceblue;
 }
 
 .infoBox {
@@ -17,5 +22,11 @@ ul {
 }
 
 img {
-  width: 100px;
+  width: 80px;
+  border-radius: 8px;
+}
+
+.movieList {
+  margin: 0 32px;
+  padding: 0;
 }

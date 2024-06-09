@@ -1,0 +1,13 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.poster {
+  margin-top: 20px;
+  width: 500px;
+}
+
+.pageWrapper button {
+  width: 150px;
+}

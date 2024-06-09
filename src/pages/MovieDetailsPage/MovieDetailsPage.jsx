@@ -1,10 +1,18 @@
-import { Link, useParams, Outlet } from "react-router-dom";
-import { getMovieById } from "../apiFetch";
+import {
+  Link,
+  useParams,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import { getMovieById } from "../../apiFetch";
 import { useEffect, useState } from "react";
+import css from "./MovieDetailsPage.module.css";
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState([]);
   const { movieID } = useParams();
+  const location = useLocation();
   useEffect(() => {
     const handleFetch = async () => {
       try {
@@ -26,9 +34,23 @@ export const MovieDetailsPage = () => {
     genres,
   } = movie;
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(location.state);
+  };
+
   return (
-    <div>
-      <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}></img>
+    <div className={css.pageWrapper}>
+      <button onClick={handleClick}>Go home</button>
+      <img
+        className={css.poster}
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w200${poster_path}`
+            : `/src/assets/imdb_originals.jpg`
+        }
+      ></img>
       <h2>{original_title}</h2>
       <p>Release date: {release_date}</p>
       <p>Popularity: {popularity}</p>

@@ -4,7 +4,7 @@ import css from "./Navigation.module.css";
 export const Navigation = () => {
   return (
     <header className={css.header}>
-      <nav>
+      <nav className={css.navBar}>
         <Link to="/">Home</Link>
         <Link to="/movies">Movies</Link>
       </nav>

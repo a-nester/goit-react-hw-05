@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { nanoid } from "nanoid";
 import css from "./MovieList.module.css";
 
 export const MovieList = ({ movies }) => {
-  //   const location = useLocation();
+  const location = useLocation();
   return (
-    <ul>
+    <ul className={css.movieList}>
       {movies.map(
         ({
           id,
@@ -18,11 +18,15 @@ export const MovieList = ({ movies }) => {
           const idItem = nanoid();
           return (
             <li key={idItem} className={css.listItem}>
-              <Link to={`/movies/${id}`}>
+              <Link to={`/movies/${id}`} state={location}>
                 <div className={css.itemBox}>
                   {
                     <img
-                      src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+                      src={
+                        poster_path
+                          ? `https://image.tmdb.org/t/p/w200${poster_path}`
+                          : `/src/assets/imdb_originals.jpg`
+                      }
                     />
                   }
                   <div className={css.infoBox}>
