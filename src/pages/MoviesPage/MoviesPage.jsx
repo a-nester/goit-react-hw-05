@@ -33,15 +33,12 @@ export const MoviesPage = () => {
 
   const handleSearch = (value) => {
     setSearchValue(value);
-    const nextParam = value !== "" ? { query: value } : {};
-    setSearchParams(nextParam);
+    const backParam = value !== "" ? { query: value } : {};
+    setSearchParams(backParam);
   };
   return (
     <>
-      <SearchBar
-        value={searchParams.get("query") ?? ""}
-        onSearch={handleSearch}
-      />
+      <SearchBar onSearch={handleSearch} />
       {loader && <Loader />}
       {error && <ErrorMessage />}
       {<MovieList movies={movies} state={searchParams} />}

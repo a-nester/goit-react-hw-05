@@ -1,4 +1,5 @@
 .searchForm {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,4 +36,10 @@
 .button {
   height: 50px;
   border-radius: 12px;
+}
+
+.message {
+  /* position: absolute; */
+  top: -100px;
+  color: red;
 }
