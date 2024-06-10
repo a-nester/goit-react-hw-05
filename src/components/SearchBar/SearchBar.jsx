@@ -22,7 +22,12 @@ export const SearchBar = ({ onSearch }) => {
         validationSchema={validationErrorSchema}
       >
         <Form className={css.searchForm}>
-          <Field className={css.field} type="text" name="searchValue"></Field>
+          <Field
+            className={css.field}
+            type="text"
+            name="searchValue"
+            placeholder="Add movie"
+          ></Field>
           <div className={css.errorWrapper}>
             <ErrorMessage
               className={css.message}
