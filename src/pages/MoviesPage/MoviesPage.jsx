@@ -1,5 +1,4 @@
 import { useSearchParams } from "react-router-dom";
-import { nanoid } from "nanoid";
 import MovieList from "../../components/MovieList/MovieList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { getMovieBySearch } from "../../apiFetch";
@@ -10,17 +9,14 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 export const MoviesPage = () => {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const handleFetch = async () => {
       try {
         setLoader(true);
-        const data = await getMovieBySearch(
-          searchParams.get("query") ?? searchValue
-        );
+        const data = await getMovieBySearch(searchParams.get("query"));
         setMovies(data.results);
       } catch (error) {
         setError(true);
@@ -29,12 +25,11 @@ export const MoviesPage = () => {
       }
     };
     handleFetch();
-  }, [searchParams, searchValue]);
+  }, [searchParams]);
 
   const handleSearch = (value) => {
-    const valueLower = value.trim().toLowerCase();
-    setSearchValue(valueLower);
-    const backParam = value !== "" ? { query: value } : {};
+    const valueToLowerCase = value.trim().toLowerCase();
+    const backParam = value !== "" ? { query: valueToLowerCase } : {};
     setSearchParams(backParam);
   };
   return (

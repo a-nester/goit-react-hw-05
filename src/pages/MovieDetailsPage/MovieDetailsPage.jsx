@@ -12,6 +12,7 @@ import css from "./MovieDetailsPage.module.css";
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState([]);
   const { movieID } = useParams();
+
   const location = useLocation();
   useEffect(() => {
     const handleFetch = async () => {
@@ -59,12 +60,12 @@ export const MovieDetailsPage = () => {
       <p>Additional information</p>
       <ul>
         <li>
-          <Link to="moviecast" state={movieID}>
+          <Link to="cast" state={movieID}>
             Cast
           </Link>
         </li>
         <li>
-          <Link to="moviereview" state={movieID}>
+          <Link to="reviews" state={movieID}>
             Review
           </Link>
         </li>

@@ -6,15 +6,9 @@
   height: 50px;
   border-radius: 15px;
   margin: 5px 32px 20px;
-  /* place-items: center; */
 }
 
 .navBar {
-  /* place-items: center; */
   display: flex;
   gap: 15px;
-  /* justify-content: center; */
-}
-
-Link {
 }

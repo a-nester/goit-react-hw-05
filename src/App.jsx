@@ -12,7 +12,8 @@ const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
 const MovieReviews = lazy(() =>
   import("./components/MovieReviews/MovieReviews")
 );
-const Navigation = lazy(() => import("./components/Navigation/Navigation"));
+// const Navigation = lazy(() => import("./components/Navigation/Navigation"));
+import { Navigation } from "./components/Navigation/Navigation";
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieID" element={<MovieDetailsPage />}>
-            <Route path="moviecast" element={<MovieCast />} />
-            <Route path="moviereview" element={<MovieReviews />} />
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

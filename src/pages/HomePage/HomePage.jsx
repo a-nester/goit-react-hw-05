@@ -30,7 +30,6 @@ export default function Home() {
     evt.preventDefault();
     const value = evt.target.value;
     setTrendPeriod(value);
-    console.log(trendPeriod);
   };
 
   return (
