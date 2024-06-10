@@ -32,7 +32,8 @@ export const MoviesPage = () => {
   }, [searchParams, searchValue]);
 
   const handleSearch = (value) => {
-    setSearchValue(value);
+    const valueLower = value.trim().toLowerCase();
+    setSearchValue(valueLower);
     const backParam = value !== "" ? { query: value } : {};
     setSearchParams(backParam);
   };

@@ -22,15 +22,17 @@ export const SearchBar = ({ onSearch }) => {
         validationSchema={validationErrorSchema}
       >
         <Form className={css.searchForm}>
-          <Field type="text" name="searchValue" />
+          <Field className={css.field} type="text" name="searchValue"></Field>
+          <div className={css.errorWrapper}>
+            <ErrorMessage
+              className={css.message}
+              name="searchValue"
+              component="span"
+            />
+          </div>
           <button className={css.button} type="submit">
             Search
           </button>
-          <ErrorMessage
-            className={css.message}
-            name="searchValue"
-            component="span"
-          />
         </Form>
       </Formik>
     </>

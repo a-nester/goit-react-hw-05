@@ -42,7 +42,7 @@ export const MovieDetailsPage = () => {
 
   return (
     <div className={css.pageWrapper}>
-      <button onClick={handleClick}>Go home</button>
+      <button onClick={handleClick}>Go back</button>
       <img
         className={css.poster}
         src={

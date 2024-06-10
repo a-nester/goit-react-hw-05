@@ -38,8 +38,11 @@
   border-radius: 12px;
 }
 
+.errorWrapper {
+  position: absolute;
+  top: 100%;
+}
+
 .message {
-  /* position: absolute; */
-  top: -100px;
   color: red;
 }
