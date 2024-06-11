@@ -19,7 +19,6 @@ export const MovieDetailsPage = () => {
 
   const location = useLocation();
   const backLocation = useRef(location.state ?? "/movies");
-  console.log(backLocation.current);
 
   useEffect(() => {
     const handleFetch = async () => {
