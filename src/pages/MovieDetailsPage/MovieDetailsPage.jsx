@@ -6,21 +6,32 @@ import {
   useLocation,
 } from "react-router-dom";
 import { getMovieById } from "../../apiFetch";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import css from "./MovieDetailsPage.module.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
 
 export const MovieDetailsPage = () => {
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
   const [movie, setMovie] = useState([]);
   const { movieID } = useParams();
 
   const location = useLocation();
+  const backLocation = useRef(location.state ?? "/movies");
+  console.log(backLocation.current);
+
   useEffect(() => {
     const handleFetch = async () => {
+      setLoader(true);
+      setError(false);
       try {
         const data = await getMovieById(movieID);
         setMovie(data);
       } catch (error) {
-        console.log("Error");
+        setError(true);
+      } finally {
+        setLoader(false);
       }
     };
     handleFetch();
@@ -38,11 +49,13 @@ export const MovieDetailsPage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(location.state);
+    navigate(backLocation.current);
   };
 
   return (
     <div className={css.pageWrapper}>
+      {loader && <Loader />}
+      {error && <ErrorMessage />}
       <button onClick={handleClick}>Go back</button>
       <img
         className={css.poster}
