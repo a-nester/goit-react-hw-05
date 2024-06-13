@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieReview } from "../../apiFetch";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -10,15 +10,14 @@ export const MovieReview = () => {
   const [movieReview, setMovieReview] = useState([]);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
-  const location = useLocation();
-  const movieId = location.state;
+  const { movieID } = useParams();
 
   useEffect(() => {
     const handleFetch = async () => {
       setError(false);
       setLoader(true);
       try {
-        const data = await getMovieReview(movieId);
+        const data = await getMovieReview(movieID);
         setMovieReview(data.results);
       } catch (error) {
         setError(true);
@@ -27,7 +26,7 @@ export const MovieReview = () => {
       }
     };
     handleFetch();
-  }, [movieId]);
+  }, [movieID]);
   return (
     <div>
       {loader && <Loader />}

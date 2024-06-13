@@ -72,14 +72,10 @@ export const MovieDetailsPage = () => {
       <p>Additional information</p>
       <ul>
         <li>
-          <Link to="cast" state={movieID}>
-            Cast
-          </Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="reviews" state={movieID}>
-            Review
-          </Link>
+          <Link to="reviews">Review</Link>
         </li>
       </ul>
       <Outlet />

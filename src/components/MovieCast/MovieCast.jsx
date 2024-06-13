@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieCast } from "../../apiFetch";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { nanoid } from "nanoid";
@@ -9,13 +9,14 @@ export const MovieCast = () => {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [movieCast, setMovieCast] = useState([]);
-  const movieId = useLocation().state;
+  const { movieID } = useParams();
+
   useEffect(() => {
     const handleFetch = async () => {
       setError(false);
       setLoader(true);
       try {
-        const data = await getMovieCast(movieId);
+        const data = await getMovieCast(movieID);
         setMovieCast(data.cast);
       } catch (error) {
         setError(true);
@@ -24,7 +25,7 @@ export const MovieCast = () => {
       }
     };
     handleFetch();
-  }, [movieId]);
+  }, [movieID]);
   return (
     <>
       {loader && <Loader />}
